@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Button,
+  Keyboard,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 const ToDoAdder = ({ updateTask }) => {
   const [text, settext] = useState("");
 
   const buttonPressed = () => {
-
-    if(text.length > 3) {
-        updateTask(text);
-        settext("");
-    }else{
-
+    if (text.length > 3) {
+      updateTask(text);
+      settext("");
+      Keyboard.dismiss();
+    } else {
+      Alert.alert("OOPS!", "Word must be greater then 3 letters", [
+        { text: "Got IT" },
+      ]);
     }
-    
   };
 
   return (
@@ -24,11 +33,7 @@ const ToDoAdder = ({ updateTask }) => {
         onChangeText={(val) => settext(val)}
         autoCorrect={true}
       />
-      <Button
-        title="add task"
-        color="teal"
-        onPress={() => buttonPressed()}
-      />
+      <Button title="add task" color="teal" onPress={() => buttonPressed()} />
     </View>
   );
 };
