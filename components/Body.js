@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import ToDoItem from "./ToDoItem";
 import ToDoAdder from "./ToDoAdder";
 
@@ -15,9 +15,12 @@ const Body = () => {
   };
 
   const updateTask = (task) => {
-    const lengthOfToDo = todo.length;
-    const id = [...todo.map((item) => item.id).sort()].pop() + 1;
-    settodo([...todo, { text: task, id }]);
+    if(todo.map(a => a.text).includes(String(task).toLowerCase())){
+        Alert.alert("Hmmm!!!","Task already present in list.",[{text:"understood"}])
+    }else{
+        const id = [...todo.map((item) => item.id).sort()].pop() + 1;
+        settodo([...todo, { text: task, id }]);
+    }
   };
 
   return (

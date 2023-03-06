@@ -13,14 +13,18 @@ const ToDoAdder = ({ updateTask }) => {
   const [text, settext] = useState("");
 
   const buttonPressed = () => {
-    if (text.length > 3) {
+    if (text.length > 3 && text.length < 16) {
       updateTask(text);
       settext("");
       Keyboard.dismiss();
-    } else {
+    } else if(text.length < 3){
       Alert.alert("OOPS!", "Word must be greater then 3 letters", [
         { text: "Got IT" },
       ]);
+    } else{
+        Alert.alert("OOPS!", "Word must be less then 16 letters", [
+            { text: "Got IT" },
+          ]);
     }
   };
 
