@@ -28,7 +28,7 @@ const ToDoAdder = ({ updateTask }) => {
     <View style={styles.toDoAddContainer}>
       <TextInput
         style={styles.input}
-        placeholder="add new to do"
+        placeholder="add to do"
         value={text}
         onChangeText={(val) => settext(val)}
         autoCorrect={true}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#bbb",
     borderRadius: 10,
-    borderStyle: "dashed",
+    borderStyle: "solid",
     height: 50,
     padding: 8,
     fontSize: 16,
